@@ -20,7 +20,8 @@ if using == '1':
             print("YOUR TURN")
             await websocket.send("keepalive")
             while True:
-                guess = await aioconsole.ainput().lower()
+                guess = await aioconsole.ainput()
+                guess = guess.lower()
                 if guess in used: print("Already used.")
                 elif guess in countries:
                     break
@@ -40,7 +41,8 @@ elif using == '2':
             while True:
                 print("YOUR TURN")
                 while True:
-                    guess = await aioconsole.ainput().lower()
+                    guess = await aioconsole.ainput()
+                    guess = guess.lower()
                     if guess in used: print("Already used.")
                     elif guess in countries:
                         break
