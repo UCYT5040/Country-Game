@@ -18,6 +18,7 @@ if using == '1':
             print(message)
             used.append(message)
             print("YOUR TURN")
+            await websocket.send("keepalive")
             while True:
                 guess = input().lower()
                 if guess in used: print("Already used.")
@@ -47,7 +48,9 @@ elif using == '2':
                         print("Invalid guess. Check spelling.")
                 used.append(guess)
                 await websocket.send(guess)
-                r = await websocket.recv()
+                r = "keepalive"
+                while r == "keepalive":
+                    r = await websocket.recv()
                 used.append(r)
                 print(r)
 
