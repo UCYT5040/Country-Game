@@ -1,2 +1,3 @@
 country_list
 websockets
+aioconsole

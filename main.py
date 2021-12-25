@@ -1,6 +1,6 @@
 import asyncio
 import websockets
-
+import aioconsole
 from country_list import countries_for_language
 countries = [dict(countries_for_language("en"))[i].lower() for i in dict(countries_for_language("en")).keys()]
 # print(countries)
@@ -20,7 +20,7 @@ if using == '1':
             print("YOUR TURN")
             await websocket.send("keepalive")
             while True:
-                guess = input().lower()
+                guess = await aioconsole.ainput().lower()
                 if guess in used: print("Already used.")
                 elif guess in countries:
                     break
@@ -40,7 +40,7 @@ elif using == '2':
             while True:
                 print("YOUR TURN")
                 while True:
-                    guess = input().lower()
+                    guess = await aioconsole.ainput().lower()
                     if guess in used: print("Already used.")
                     elif guess in countries:
                         break
