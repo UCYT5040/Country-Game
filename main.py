@@ -3,7 +3,7 @@ import websockets
 
 from country_list import countries_for_language
 countries = [dict(countries_for_language("en"))[i].lower() for i in dict(countries_for_language("en")).keys()]
-print(countries)
+# print(countries)
 print("WELCOME!")
 print("Notes:\n- Names may include '.' and '&'\n- Use names like you would see in a form, like 'united states', not 'usa' or 'united states of america'.")
 using = input("1. Play As Server 2. Play As Client\n")
